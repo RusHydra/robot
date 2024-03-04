@@ -1,4 +1,4 @@
-site_name: Robot and Dot
+site_name: Робот и Точка
 theme:
   name: material
   features:
@@ -49,4 +49,4 @@ nav:
   - Документация:
     - test.md
   - API:
-    - api/api.md
+    - api.md
