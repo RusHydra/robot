@@ -4,3 +4,5 @@
 
 OTUS, 2024 г.
 
+![](images/bender_cafe768.jpg)
+
