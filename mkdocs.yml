@@ -3,6 +3,9 @@ repo_name: RusHydra/robot
 repo_url: https://github.com/rushydra/robot/
 theme:
   name: material
+  font:
+    text: Roboto
+    code: Roboto Mono
   features:
     - navigation.tabs
     - navigation.sections
