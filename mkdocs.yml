@@ -17,16 +17,16 @@ theme:
   palette:
     - scheme: default
       toggle:
-        icon: material/toggle-switch-off-outline
+        icon: material/brightness-4
         name: Switch to dark mode
-      primary: teal
+      primary: deep purple
       accent: purple
     - scheme: slate
       toggle:
-        icon: material/toggle-switch
+        icon: material/brightness-7
         name: Switch to light mode
-      primary: teal
-      accent: lime
+      primary: deep purple
+      accent: purple
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -45,15 +45,22 @@ plugins:
    - search:
       separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
    - swagger-ui-tag
+   - enumerate-headings:
+      exclude:
+        - index.md
 nav:
   - Домашняя страница: 
     - index.md
   - Документация: 
     - glossary.md
     - generalinfo.md
+    - purpose.md
+    - characteristic.md
+    - business_processes.md
+    - requirements.md
   - API: api.md
   - Схемы: diagrams.md
   - Тесты: testcase.md
   - Задачи:
     - План: task.md
-    - Шаблоны: template/template.md
+    - Шаблоны: template.md
