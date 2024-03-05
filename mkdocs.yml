@@ -1,4 +1,5 @@
 site_name: Робот и Точка
+repo_url: https://github.com/rushydra/robot/
 theme:
   name: material
   features:
