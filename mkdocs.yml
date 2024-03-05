@@ -1,4 +1,5 @@
 site_name: Робот и Точка
+repo_name: RusHydra/robot
 repo_url: https://github.com/rushydra/robot/
 theme:
   name: material
@@ -45,11 +46,14 @@ plugins:
       separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
    - swagger-ui-tag
 nav:
-  - Домашняя страница: index.md
-  - Документация: documents.md
+  - Домашняя страница: 
+    - index.md
+  - Документация: 
+    - glossary.md
+    - generalinfo.md
   - API: api.md
   - Схемы: diagrams.md
   - Тесты: testcase.md
   - Задачи:
-     - План: task.md
-     - Шаблоны: template.md
+    - План: task.md
+    - Шаблоны: template/template.md
