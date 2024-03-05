@@ -45,11 +45,11 @@ plugins:
       separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
    - swagger-ui-tag
 nav:
-  - Домашняя страница:
-    - index.md
-  - Документация:
-    - test.md
-  - API:
-    - api.md
-  - Схемы:
-    - diagrams.md
+  - Домашняя страница: index.md
+  - Документация: documents.md
+  - API: api.md
+  - Схемы: diagrams.md
+  - Тесты: testcase.md
+  - Задачи:
+     - План: task.md
+     - Шаблоны: template.md
