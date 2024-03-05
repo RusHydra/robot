@@ -16,5 +16,5 @@
 
 
 <p align="center">
-    <img width="500" align="center" src="https://raw.githubusercontent.com/geksogen/images/UserStoryMap.jpg" alt="demo"/>
+    <img width="500" align="center" src="https://raw.githubusercontent.com/rushydra/robot/main/doc/images/UserStoryMap.jpg" alt="demo"/>
 </p>
