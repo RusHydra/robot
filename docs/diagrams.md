@@ -6,7 +6,7 @@
 
 ## Картинка
 
-![](images/UserStoryMap.jpg)
+![Userstoy](images/UserStoryMap.jpg)
 
 
 <p align="center">
