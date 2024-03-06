@@ -61,6 +61,9 @@ nav:
     - characteristic.md
     - business_processes.md
     - requirements.md
+    - model.md
+    - architecture.md    
+    - ui.md
   - API: api.md
   - Схемы: diagrams.md
   - Тесты: testcase.md
