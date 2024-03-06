@@ -15,3 +15,7 @@
 ## Ссылка
 
 [Название ссылки]: index.md
+
+## Загрузка файла
+
+<a id="raw-url" href="https://raw.githubusercontent.com/rushydra/robot/main/docs/wireframe/mobile_app.pdf">Download FILE</a>
