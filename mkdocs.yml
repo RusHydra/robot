@@ -54,14 +54,13 @@ plugins:
    - enumerate-headings:
       exclude:
         - index.md
+        - glossary.md        
 nav:
   - Домашняя страница: 
     - index.md
   - Документация: 
     - glossary.md
     - generalinfo.md
-    - purpose.md
-    - characteristic.md
     - business_processes.md
     - requirements.md
     - model.md
