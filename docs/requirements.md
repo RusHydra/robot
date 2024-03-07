@@ -84,4 +84,5 @@
 - Тестовые сценарии успешно пройдены
 - Изменения отражены в документации
 
+## Карта пользовательских историй в Miro
 <a id="raw-url" href="https://otus.ru/redirect/?to=https%3A%2F%2Fmiro.com%2Fapp%2Fboard%2FuXjVNomrtxc%3D%2F%3Fshare_link_id%3D601247181371">Ссылка на полную UserStoryMap в Miro</a>
