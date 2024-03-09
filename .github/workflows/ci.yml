@@ -30,6 +30,7 @@ jobs:
       - run: pip install beautifulsoup4>=4.11.1
       - run: pip install mkdocs-swagger-ui-tag
       - run: pip install mkdocs-enumerate-headings-plugin
+      - run: pip install mkdocs-glightbox
       - run: mkdocs gh-deploy --force
 
       
