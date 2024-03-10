@@ -16,7 +16,7 @@ usecase menu as "UC-3 Ознакомиться с меню"
 usecase add_basket as "UC-4 Добавить позиции в корзину"
 usecase take_type as "UC-5 Указать в зале или на вынос"
 usecase pay as "UC-6 произвести оплату"
-usecase pay_nal as "UC-7 Оплата наличными"
+usecase pay_nal as "UC-7 Оплата через СБП"
 usecase pay_bunus as "UC-8 Списать баллы"
 usecase pay_card as "UC-9 Оплата картой"
 usecase talon as "UC-10 Получить талон
@@ -24,7 +24,7 @@ usecase talon as "UC-10 Получить талон
 usecase back as "UC-14 Оформить отказ от покупки"
 usecase pay_back as "UC-15 Вернуть деньги"
 usecase eq_back as "UC-16 Вернуть на карту"
-usecase nal_back as "UC-17 Вернуть наличные"
+usecase nal_back as "UC-17 Вернуть в СБП"
 usecase error as "UC-18 Получить сигнальную информацию"
 usecase chk_out as "UC-19 Получить информацию
  выводе из меню позиции"
