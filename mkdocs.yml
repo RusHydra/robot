@@ -18,7 +18,10 @@ theme:
     - content.code.copy
   language: en
   palette:
-    - scheme: default
+    - scheme: default 
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to system preference 
       toggle:
         icon: material/brightness-4
         name: Switch to dark mode
@@ -31,6 +34,8 @@ theme:
       primary: deep purple
       accent: purple
 
+
+
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
@@ -41,12 +46,12 @@ markdown_extensions:
       generic: true
   - pymdownx.tasklist:
       custom_checkbox: true
-      clickable_checkbox: true      
   - footnotes
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.mark
   - attr_list
+
 plugins:
    - glightbox:
       touchNavigation: true
@@ -69,7 +74,18 @@ plugins:
    - enumerate-headings:
       exclude:
         - index.md
-        - glossary.md        
+        - glossary.md
+   - build_plantuml:
+      render: 'server' # or "local" for local rendering
+      bin_path: '/usr/local/bin/plantuml' # ignored when render: server
+      server: 'http://www.plantuml.com/plantuml' # official plantuml server
+      disable_ssl_certificate_validation: true # for self-signed and invalid certs
+      output_format: 'svg' # or "png"
+      allow_multiple_roots: false # in case your codebase contains more locations for diagrams (all ending in diagram_root)
+      diagram_root: 'docs/diagrams' # should reside under docs_dir
+      output_folder: 'out'
+      input_folder: 'src'
+      input_extensions: '' # comma separated list of extensions to parse, by default every file is parsed        
 
 nav:
   - Домашняя страница: 

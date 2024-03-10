@@ -31,6 +31,7 @@ jobs:
       - run: pip install mkdocs-swagger-ui-tag
       - run: pip install mkdocs-enumerate-headings-plugin
       - run: pip install mkdocs-glightbox
+      - run: pip3 install mkdocs-build-plantuml-plugin
       - run: mkdocs gh-deploy --force
 
       

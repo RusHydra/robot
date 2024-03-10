@@ -1,0 +1,66 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor "Посетитель" as clt
+actor "Менеджер на гостеприимстве" as mgr
+
+usecase show_talon as "UC-11 Предъявить талон"
+usecase take_order as "UC-12 Забрать заказ"
+usecase cons as "UC-13 Консультация"
+
+rectangle "Система в зале ресторана" {
+usecase order as "UC-1 Оформить заказ"
+usecase loyal as "UC-2 регистрация в системе
+ лояльности"
+usecase menu as "UC-3 Ознакомиться с меню"
+usecase add_basket as "UC-4 Добавить позиции в корзину"
+usecase take_type as "UC-5 Указать в зале или на вынос"
+usecase pay as "UC-6 произвести оплату"
+usecase pay_nal as "UC-7 Оплата наличными"
+usecase pay_bunus as "UC-8 Списать баллы"
+usecase pay_card as "UC-9 Оплата картой"
+usecase talon as "UC-10 Получить талон
+ с номером заказа"
+usecase back as "UC-14 Оформить отказ от покупки"
+usecase pay_back as "UC-15 Вернуть деньги"
+usecase eq_back as "UC-16 Вернуть на карту"
+usecase nal_back as "UC-17 Вернуть наличные"
+usecase error as "UC-18 Получить сигнальную информацию"
+usecase chk_out as "UC-19 Получить информацию
+ выводе из меню позиции"
+usecase chk_err as "UC-20 Получить информацию
+ о сбое системы"
+
+  clt -- (menu)
+  clt -- (order)
+  clt -- (show_talon)
+  clt -- (back)
+  clt - (cons)
+  (cons) - mgr
+  mgr -- error
+  
+  (loyal) .> (order) : extend
+  (show_talon) ..> (take_order) : include
+  
+  (order) <. (menu) : extend
+  (order) ..> (add_basket) : include
+  (order) ..> (take_type) : include
+  (order) ..> (pay) : include
+  (pay) <.. (pay_nal) : extend
+  (pay) <.. (pay_card) : extend
+  (pay) <.. (pay_bunus) : extend
+  (pay_nal) ..> (talon) : include
+  (pay_card) ..> (talon) : include
+  (pay_bunus) ..> (talon) : include
+  
+  mgr -- (back)
+  mgr -- (pay_back)
+  (back) ..> (pay_back) : include
+  (pay_back) <.. (nal_back) : extend
+  (pay_back) <.. (eq_back) : extend
+  
+  error <.. (chk_err) : extend
+  error <.. (chk_out) : extend
+  
+}
+@enduml

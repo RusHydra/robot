@@ -1,0 +1,56 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor "Менеджер по ассортименту" as mgrr
+actor "Техник на производстве" as tech
+
+usecase add_ing as "UC-28 Пополнить запас полуфабрикатов"
+
+rectangle "Система на производстве" {
+usecase add_pos as "UC-21 Внести новую позицию в меню"
+usecase upd_price as "UC-22 Изменить цену"
+usecase add_act as "UC-23 Внести информацию об акциях"
+usecase add_spec as "UC-24 Внести информацию
+ о специальных предложениях"
+usecase add_comp as "UC-25 Настроить комплексные предложения"
+usecase add_tech as "UC-26 Настроить технологическую карту"
+usecase apply as "UC-27 Применить изменения
+ в следующем открытом торговом дне"
+usecase status as "UC-29 Получить информацию
+ о статусе роботов"
+usecase chk_err as "UC-30 Получить информацию
+ о наличии ошибок"
+usecase chk_num as "UC-31 Узнать номер робота"
+usecase depo as "UC-32 Получить информацию
+ о исчерпании запасов полуфабрикатов"
+usecase chk_time as "UC-33 Узнать время
+ до исчерпания запаса"
+usecase chk_count as "UC-34 Узнать количество
+ пополнения"
+usecase chk_ing as "UC-35 Узнать тип полуфабриката"
+
+  mgrr -- (add_pos)
+  mgrr -- (upd_price)
+  mgrr -- (add_act)
+  mgrr -- (add_spec)
+  mgrr -- (add_comp)
+  mgrr -- (add_tech)
+  tech -- (add_ing)
+  tech -- status
+  
+  (add_pos) ..> apply : include
+  (upd_price) ..> apply : include
+  (add_act) ..> apply : include
+  (add_spec) ..> apply : include
+  (add_comp) ..> apply : include
+  (add_tech) ..> apply : include
+  
+  status <.. (chk_err) : extend
+  status <.. depo : extend
+  (chk_err) <.. (chk_num) : extend
+  depo <.. (chk_num) : extend
+  depo <.. (chk_ing) : extend
+  depo <.. (chk_count) : extend
+  depo <.. (chk_time) : extend
+}
+@enduml

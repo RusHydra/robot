@@ -1,0 +1,144 @@
+@startuml
+
+
+Entity Client as "Клиент" {
+Телефон
+Профиль личного кабинета
+Баллы лояльности
+}
+
+Entity Product as "Товар" {
+Название
+Описание
+Белки
+Жиры
+Углеводы
+Калорийность
+Фотография
+Цена
+Ингредиенты [1..*] Ингредиент
+Время приготовления
+}
+
+Entity Menu as "Меню" {
+Название
+Тип меню 
+Разделы меню [1..*] Категория меню
+}
+
+Entity MenuSection as "Категория меню" {
+Название
+Товар [1..*] Товар
+}
+
+Entity Basket as "Корзина" {
+Товар [1..50] Товар
+Сумма
+Способ получения: Способ получения
+Время получения
+}
+
+Entity Order as "Заказ" {
+Номер
+Дата
+Статус заказа: Статус заказа
+Статус оплаты: Оплата
+Скидка за баллы
+Время приготовления
+}
+
+Enum OrderStatus as "Статус заказа" {
+Создан
+Производится
+Готов
+Выдан
+}
+
+Enum Obtaining as "Способ Получения" {
+С собой
+В зале
+}
+
+Enum PaymentStatus as "Оплата" {
+Не оплачен
+Оплачен
+}
+
+Enum PaymentType as "Тип платежа" {
+Наличные
+Карта
+QR-код
+}
+
+Enum PaymentState as "Статус платежа" {
+Инициирован
+Подтверждён
+Отклонён
+}
+
+Entity ComboBurger as "КомбоБургер" {
+Название
+Ингредиенты [2..10] Ингредиент
+Наценка
+}
+
+Entity Ingredient as "Ингредиент" {
+Название
+Белки
+Жиры
+Углеводы
+Калорийность
+Цена
+Максимальное количество
+Обязательность
+Сочетание с [0..*] Ингредиент
+}
+
+Entity Payment as "Платёж" {
+Номер заказа
+Дата
+Сумма
+Тип платежа: Тип платежа
+Номер подтверждения
+}
+
+Entity Receipt as "Чек" {
+}
+
+Entity SmsGateway as "СМС шлюз" {
+}
+
+Entity PermitionPayment as "Подтверждение платежа" {
+Номер
+Банк
+Номер карты
+Телефон
+Код смс
+Статус платежа: Статус платежа
+}
+
+
+Ingredient --* Product
+Ingredient --* ComboBurger
+Ingredient -- Ingredient
+Product "1..50" --o "0..1" Basket
+Product --o Product
+Order --|> Basket
+Order --* Payment
+OrderStatus -- Order
+Obtaining -- Basket
+PaymentStatus -- Order
+MenuSection "1..*" --* "1..*" Menu
+Product "1..*" --o "1..*" MenuSection
+ComboBurger --|> Product
+Client "0..1" --> "0..*" Basket : Формирует
+Client "0..1" --> "0..*" Order : Получает
+Client --> Payment : Оплачивает
+PaymentType --> Payment
+Receipt --|> Payment
+PermitionPayment -- PaymentState
+PermitionPayment -- SmsGateway
+PermitionPayment o-- Payment
+PermitionPayment o-- Client
+
+@enduml
