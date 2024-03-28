@@ -1,0 +1,153 @@
+@startuml
+skinparam linetype ortho
+
+Entity Client as "Клиент" {
+Телефон
+Профиль личного кабинета
+Баллы лояльности
+}
+
+Entity Product as "Товар" {
+Название
+Описание
+Белки
+Жиры
+Углеводы
+Калорийность
+Фотография
+Цена
+Ингредиенты [1..*] Ингредиент
+Время приготовления
+}
+
+Entity Menu as "Меню" {
+Название
+Тип меню 
+Разделы меню [1..*] Категория меню
+}
+
+Entity MenuSection as "Категория меню" {
+Название
+Товар [1..*] Товар
+}
+
+Entity Cart as "Корзина" {
+Товар [1..50] Товар
+Сумма
+Время получения
+Статус корзины: Статус корзины
+}
+
+Entity Order as "Заказ" {
+Номер
+Дата
+Статус заказа: Статус заказа
+Способ получения: Способ получения
+Скидка за баллы
+Время приготовления
+}
+
+Enum CartStatus as "Статус корзины" {
+Формируется
+Сформирована
+}
+
+Enum OrderStatus as "Статус заказа" {
+Создан
+Производится
+Готов
+Выдан
+Отменён
+}
+
+Enum Obtaining as "Способ Получения" {
+С собой
+В зале
+}
+
+Enum PaymentStatus as "Оплата" {
+Не оплачен
+Оплачен
+}
+
+Enum PaymentType as "Тип платежа" {
+Наличные
+Карта
+QR-код
+}
+
+Enum PaymentState as "Статус платежа" {
+Инициирован
+Подтверждён
+Отклонён
+}
+
+Entity ComboBurger as "КомбоБургер" {
+Название
+Ингредиенты [2..10] Ингредиент
+Наценка
+}
+
+Entity Ingredient as "Ингредиент" {
+Название
+Белки
+Жиры
+Углеводы
+Калорийность
+Цена
+Максимальное количество
+Обязательность
+Сочетание с [0..*] Ингредиент
+}
+
+Entity Payment as "Счёт" {
+Номер заказа
+Дата
+Сумма
+Тип платежа: Тип платежа
+Статус оплаты: Оплата
+Номер подтверждения
+}
+
+Entity Receipt as "Чек" {
+}
+
+Entity SmsGateway as "СМС шлюз" {
+}
+
+Entity PermitionPayment as "Оплата счёта" {
+Номер
+Банк
+Номер карты
+Телефон
+Код смс
+Статус платежа: Статус платежа
++ Оплата по карте()
++ Оплата через СБП()
++ Оплата наличными()
+}
+
+
+Ingredient "0..*" --o "2..10" ComboBurger
+Ingredient -- Ingredient
+Product "1..50" --o "0..1" Cart
+Product --o Product
+Order --|> Cart
+Cart -- CartStatus
+PaymentStatus --* Payment
+OrderStatus -- Order
+Obtaining -- Order
+MenuSection "1..*" --* "1..*" Menu
+Product "1..*" --o "1..*" MenuSection
+ComboBurger --|> Product
+Client "1" --> "0..*" Cart : Формирует
+Client "1" --> "0..*" Order : Получает
+Client "1" --> "0..*" Payment : Оплачивает
+PaymentType --> Payment
+Receipt --|> Payment
+PermitionPayment -- PaymentState
+PermitionPayment -- SmsGateway
+PermitionPayment o-- Payment
+PermitionPayment o-- Client
+
+@enduml

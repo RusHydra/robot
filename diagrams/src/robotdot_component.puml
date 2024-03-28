@@ -1,0 +1,84 @@
+@startuml Architecture_Component
+!include <C4/C4_Container>
+skinparam linetype ortho
+
+Person(personClient, "Клиент")
+Person(personManager, "Менеджер на гостеприимстве")
+Person(personAssortmentManager, "Менеджер по ассортименту")
+Person(personProductionTechnician, "Техник")
+Person(personАdmin, "Администратор ресторана")
+
+System_Boundary(systemRobot, "Робот и точка"){
+	Container(mobileApp, "Мобильное приложение", "iOS и Android")
+	Container(webApp, "Одностраничное веб-приложение", "Терминалы в ресторане")
+	Container(monitorApp, "Приложение мониторинга","Java and Spring MVC", "Отображает статусы роботов")
+	Container(catalogMenuApp, "Приложение редактирования меню", "Java and Spring MVC", "Составление меню, управление торговым днём")
+	Container(api, "API gateway","Spring MVC REST Controller","Rest API, интерфейсы для мобильных и веб клиентов")
+	Boundary(systemBack, "Backend"){
+	
+		Container(authentication, "Модуль регистрации", "Spring service", "Аутентификация и авторизация")
+		Container(order, "Модуль управления заказами", "Spring service", "Обработка поступающих заказов")
+		Container(payment, "Модуль оплаты", "Spring service", "Формирование счетов, вызов внешних платёжных систем, отправка чеков")
+		Container(loyalty, "Модуль лояльности", "Spring service", "Учёт баллов лояльности")
+		Container(catalogMenu, "Модуль управления меню и каталогом блюд", "Spring service", "Меню, каталог блюд, управление торговым днём")
+		Container(robotController, "Модуль управления роботами", "Spring service", "Очередь заказов на производство, вызов API управления роботами")
+		Container(logService, "Модуль логирования", "Spring service", "Логирование операций оплаты и списания/начисления баллов")
+	}
+	ContainerDb(database, "База данных", "PostgreSQL")
+}
+
+System_Ext(systemInternetBanking, "Сервис приёма платежей по картам и СБП", "Банковский эквайринг")
+System_Ext(systemInternetPayment, "Сервис приёма онлайн платежей", "Онлайн оплата")
+System_Ext(systemSmsGateway, "Сервис отправки смс")
+System_Ext(systemEmailGateway, "Сервис отправки email")
+System_Ext(robotAPI, "Сервис управления роботами", "Управление производственным циклом с использованием роботов")
+
+'API Area
+Rel_L(api, order, "uses")
+Rel(api, authentication, "uses")
+Rel(api, payment, "uses")
+Rel(api, catalogMenu, "uses")
+Rel(api, database, "JDBC")
+
+'Frontend area
+Rel(mobileApp, api, "Вызывает методы", "HTTP/JSON")
+Rel(webApp, api, "Вызывает методы", "HTTP/JSON")
+Rel(monitorApp, robotController, " uses")
+
+
+'Backend area
+Rel(systemBack, database, "Сохраняет/Читает", "JDBC")
+Rel(order, robotController,"Передача заказов на производство")
+Rel_L(order,catalogMenu, "uses")
+BiRel_L(order, payment, "uses")
+Rel_R(catalogMenuApp, catalogMenu,"uses")
+Rel(loyalty, authentication, "uses")
+Rel(payment, loyalty, "uses")
+Rel(payment, logService, "uses")
+Rel_U(robotController, catalogMenu, "uses")
+
+
+'External System area
+Rel(robotController, robotAPI, "Вызов методов API")
+Rel_L(payment, systemInternetPayment,"Вызов методов API", "HTTP/JSON")
+Rel_L(payment, systemInternetBanking,"Вызов методов API", "HTTP/JSON")
+Rel_L(payment, systemEmailGateway, "использует для отправки email", "SMTP")
+Rel(authentication, systemSmsGateway, "Отправка пароля в смс")
+
+'Person Area
+Rel(personClient, mobileApp, " ")
+Rel(personManager, mobileApp, " ")
+Rel(personClient, webApp, " ")
+Rel(personProductionTechnician, monitorApp, " ")
+Rel_R(personAssortmentManager, catalogMenuApp, " ")
+Rel(personАdmin, catalogMenuApp, " ")
+
+Lay_U(order, api)
+Lay_D(monitorApp, catalogMenu)
+Lay_U(systemInternetPayment, systemEmailGateway)
+Lay_U(systemEmailGateway, systemInternetPayment)
+Lay_D(systemEmailGateway, systemInternetBanking)
+Lay_D(personProductionTechnician, personAssortmentManager)
+Lay_D(personAssortmentManager, personАdmin)
+
+@enduml
