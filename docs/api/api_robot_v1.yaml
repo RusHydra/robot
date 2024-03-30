@@ -1,0 +1,596 @@
+openapi: 3.0.0
+info:
+  version: '1'
+  title: 'Robot and Dot frontend API'
+  description: API для приложения оформления заказа
+paths:
+  /auth/login:
+    post:
+      tags: 
+        - Технические методы
+      summary: Аутентификация пользователя
+      description: Позволяет пользователю войти в систему, используя логин и пароль.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+              properties:
+                username:
+                  type: string
+                  description: Имя пользователя
+                password:
+                  type: string
+                  format: password
+                  description: Пароль пользователя
+      responses:
+        '200':
+          description: Успешная аутентификация
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    format: JWT
+                    description: Токен доступа
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6IjEyMzQ1Njc4OTAiLCJwYXNzd29yZCI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.GHVmYtYrmYSmZ76O_SJ6SM_vgBGcViliUVd4QPgabz0
+        '401':
+          description: Неверные учетные данные
+        '500':
+          description: Внутренняя ошибка сервера  
+  /account:
+    get:
+      tags: 
+        - Просмотр личного кабинета
+      security:
+        - bearerAuth: []
+      summary: Получение данных личного кабинета
+      responses:
+        '200':
+          description: Данные личного кабинета
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  loyalty_points:
+                    type: integer
+                  email:
+                    type: string
+                  phone:
+                    type: string
+        '401':
+          description: Пользователь не авторизован                    
+        '404':
+          description: Личный кабинет не найден
+        '500':
+          description: Внутренняя ошибка сервера          
+          
+  /dish:
+    get:
+      tags: 
+        - Просмотр блюд
+      summary: Получение списка блюд и структуры меню
+      parameters:
+        - in: query
+          name: category
+          schema:
+            type: string
+            enum:
+              - burgers
+              - drinks
+              - salads
+              - sideDishes
+              - sweets
+          description: Фильтр по категории блюда
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+          description: Номер страницы для пагинации
+        - in: query
+          name: pageSize
+          schema:
+            type: integer
+            default: 20
+            maximum: 50
+          description: Количество блюд на странице
+
+      responses:
+        '200':
+          description: Список блюд
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                    description: Общее количество блюд, соответствующих фильтрам
+                  dishes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Dish'
+                  menu:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Menu'
+                  page:
+                    type: integer
+                    description: Текущая страница
+                  pageSize:
+                    type: integer
+                    description: Количество блюд на странице
+        '500':
+          description: Внутренняя ошибка сервера                    
+  /dish/{dishId}:
+    get:
+      tags: 
+       - Просмотр блюд
+      summary: Получение подробного описания блюда
+      parameters:
+        - name: dishId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Подробное описание блюда
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DishExtended'
+        '404':
+          description: Блюдо не найдено
+        '500':
+          description: Внутренняя ошибка сервера
+                
+  /cart/items:
+    post:
+      tags: 
+        - Операции с корзиной
+      summary: Добавление блюда в корзину
+      description: Добавляет указанное блюдо в корзину пользователя.
+      operationId: addDishToCart
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddDishRequest'
+      responses:
+        '201':
+          description: Блюдо успешно добавлено в корзину
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddDishResponse'
+        '400':
+          description: Ошибка запроса, отсуствует указанное количество
+        '401':
+          description: Пользователь не авторизован
+        '404':
+          description: Блюдо у указанным id не найдено
+        '500':
+          description: Внутренняя ошибка сервера
+    get:
+      tags: 
+        - Операции с корзиной
+      summary: Получение товаров в корзине
+      description: Возвращает список товаров, находящихся в корзине пользователя.
+      operationId: getCartDishes
+      responses:
+        '200':
+          description: Список товаров в корзине
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartDishesResponse'
+        '401':
+          description: Пользователь не аутентифицирован
+        '404':
+          description: Ошибка запроса, отсуствует корзина
+        '500':
+          description: Внутренняя ошибка сервера
+  /cart/obtaining:
+    post:
+      tags: 
+        - Операции с корзиной
+      summary: Выбор способа получения заказа
+      description: Определяет способ получения заказа, в зале или на вынос.
+      operationId: addOrderObtaining
+      parameters:
+        - in: query
+          name: obtaining
+          required: true
+          schema:
+            type: string
+            enum:
+              - с собой
+              - в зале
+      responses:
+        '201':
+          description: Выбран способ получения заказа
+          content:
+            application/json:
+              schema:
+                type: string
+                example: с собой
+        '401':
+          description: Пользователь не утентифицирован
+        '404':
+          description: Ошибка запроса, отсуствует корзина.
+        '500':
+          description: Внутренняя ошибка сервера
+  /cart/items/{dishId}:
+    put:
+      tags: 
+        - Операции с корзиной
+      security:
+        - bearerAuth: []        
+      summary: Редактирование блюда в корзине
+      description: Обновляет количество указанного блюда в корзине
+      operationId: updateCartItem
+      parameters:
+        - name: dishId
+          in: path
+          required: true
+          description: Уникальный идентификатор блюда
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateItemRequest'
+      responses:
+        '200':
+          description: Информация о блюде успешно обновлена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateItemResponse'
+        '400':
+          description: Неверный запрос, например, отсутствует количество
+        '401':
+          description: Пользователь не авторизован
+        '404':
+          description: Блюдо не найдено в корзине
+        '500':
+          description: Внутренняя ошибка сервера
+  /cart/checkout:
+    post:
+      tags: 
+        - Операции с корзиной
+      security:
+        - bearerAuth: []
+      summary: Оформление заказа
+      description: Оформляет заказ на основе текущего содержимого корзины пользователя.
+      operationId: checkoutCart
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckoutRequest'
+      responses:
+        '200':
+          description: Заказ успешно оформлен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckoutResponse'
+        '400':
+          description: Неверный запрос, неполные или некорректные данные
+        '401':
+          description: Пользователь не авторизован
+        '404':
+          description: Корзина не найдена
+        '500':
+          description: Внутренняя ошибка сервера          
+
+  /order/{orderId}:
+    get:
+      tags: 
+        - Операции с заказом
+      summary: Получение информации о заказе
+      description: Возвращает состав заказа и статус
+      operationId: getOrder
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          description: Уникальный идентификатор заказа
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Состав заказа
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderDishesResponse'
+        '401':
+          description: Пользователь не аутентифицирован
+        '404':
+          description: Ошибка запроса, заказ не найден
+        '500':
+          description: Внутренняя ошибка сервера
+    put:
+      tags: 
+        - Операции с заказом    
+      summary: Изменение статуса заказа
+      description: Отменяет заказ
+      operationId: putOrderStatus
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          description: Уникальный идентификатор заказа
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Новый статус
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateOrderRequest'
+        '401':
+          description: Пользователь не аутентифицирован
+        '404':
+          description: Ошибка запроса, заказ не найден
+        '500':
+          description: Внутренняя ошибка сервера
+        
+  /order/{orderId}/payment:
+    post:
+      tags: 
+        - Операции с заказом
+      security:
+        - bearerAuth: []
+      summary: Инициация оплаты заказа
+      description: Инициирует процесс оплаты для указанного заказа и возвращает ссылку для перенаправления на платежный шлюз.
+      operationId: initiatePayment
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          description: Уникальный идентификатор заказа
+          schema:
+            type: integer
+      responses:
+        '303':
+          description: Перенаправление на платежный шлюз
+          headers:
+            Location:
+              schema:
+                type: string
+              description: URL платежного шлюза
+              example: https://raw.githubusercontent.com/rushydra/robot/main/docs/images/payment_page.png
+        '400':
+          description: Неверный запрос, неполные или некорректные данные
+        '401':
+          description: Пользователь не авторизован
+        '403':
+          description: Пользователь не имеет права на оплату данного заказа
+        '404':
+          description: Заказ не найден
+        '500':
+          description: Внутренняя ошибка сервера
+   
+          
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Menu:
+      type: object
+      properties:
+        menuId:
+          type: integer
+        menuName:
+          type: string
+          example: Основное меню
+        sectionMenuId:
+          type: integer
+        sectionMenuName:
+          type: string
+          example: Бургеры
+    Dish:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          example: Чизбургер
+        imageLink:
+          type: string
+          format: url
+          example: https://raw.githubusercontent.com/rushydra/robot/main/docs/images/burger.png
+    DishExtended:
+      allOf:
+        - $ref: '#/components/schemas/Dish'
+        - type: object
+          properties:
+            description:
+              type: string
+            category:
+              type: string
+              enum:
+                - burgers
+                - drinks
+                - salads
+                - sideDishes
+                - sweets
+            price:
+              type: number     
+            proteins:
+              type: integer
+            fats:
+              type: integer
+            carbohydrates:
+              type: integer
+            calorie:
+              type: integer
+    AddDishRequest:
+      type: object
+      required:
+        - dishId
+        - quantity
+      properties:
+        dishId:
+          type: string
+          description: Уникальный идентификатор блюда
+        quantity:
+          type: integer
+          description: Количество добавляемых блюд
+    AddDishResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Сообщение о результате добавления
+        cartTotal:
+          type: integer
+          description: Общее количество блюд в корзине
+    CartDishesResponse:
+      type: object
+      properties:
+        userId:
+          type: integer
+          description: Уникальный идентификатор пользователя
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
+        totalPrice:
+          type: number
+          format: float
+          description: Общая стоимость всех товаров в корзине
+    CartItem:
+      type: object
+      properties:
+        dishId:
+          type: integer
+          description: Уникальный идентификатор блюда
+        name:
+          type: string
+          description: Название блюда
+        quantity:
+          type: integer
+          description: Количество товара в корзине
+        price:
+          type: number
+          format: float
+          description: Цена за единицу товара
+    UpdateItemRequest:
+      type: object
+      required:
+        - quantity
+      properties:
+        quantity:
+          type: integer
+          description: Новое количество блюда
+    UpdateItemResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Сообщение о результате обновления
+        updatedItem:
+          $ref: '#/components/schemas/CartItem'
+    CheckoutRequest:
+      type: object
+      properties:
+        paymentMethod:
+          type: string
+          description: Способ оплаты
+          enum:
+            - по карте
+            - баллы лояльности
+            - СБП
+    CheckoutResponse:
+      type: object
+      properties:
+        orderId:
+          type: integer
+          description: Уникальный идентификатор заказа
+        message:
+          type: string
+          description: Сообщение о статусе заказа
+    OrderDishesResponse:
+      type: object
+      properties:
+        userId:
+          type: integer
+          description: Уникальный идентификатор пользователя
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+        totalPrice:
+          type: number
+          format: float
+          description: Общая стоимость всех товаров в заказе
+        orderObtaining:
+          type: string
+          description: Способ получения заказа
+        orderStatus:
+          type: string
+          description: Статус заказа
+          enum:
+            - создан
+            - производится
+            - не оплачен
+            - оплачен
+            - готов
+            - выдан
+            - отменён
+            
+    OrderItem:
+      type: object
+      properties:
+        dishId:
+          type: integer
+          description: Уникальный идентификатор блюда
+        name:
+          type: string
+          description: Название блюда
+        quantity:
+          type: integer
+          description: Количество товара в заказе
+        price:
+          type: number
+          format: float
+          description: Цена за единицу товара
+    UpdateOrderRequest:
+      type: object
+      required:
+        - orderStatus
+      properties:
+        orderStatus:
+          type: string
+          default: отменён
+          description: Новый статус заказа
+          
+          
+          
+          
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/ARCANOID495_1/robot/1
