@@ -56,6 +56,9 @@
 | User_role | user_role_start | timestamp | Начало действия роли |
 | User_role | user_end timestamp | timestamp | Завершение действия роли |
 | User_role | user_role_status | integer | Сатус записи: 0 активна, 99 не активна |
+| Cart | cart_id | integer | Уникальный идентификатор |
+| Cart | order_id | integer | Связь с таблицей заказов |
+| Cart | user_id | integer | Связь с таблицей пользователей |
 | Order | order_id | integer | Уникальный идентификатор |
 | Order | order_number | varchar | Номер заказа |
 | Order | order_date | timestamp | Дата заказа |
@@ -75,7 +78,7 @@
 | Order_position | order_position_id | integer | Уникальный идентификатор |
 | Order_position | order_id | integer | Связь с таблицей заказов |
 | Order_position | dish_id | integer | Связь с таблицей каталога блюд |
-| Order_position | count | integer | Количество |
+| Order_position | quantity | integer | Количество |
 | Order_position | price_position_id | integer | Связь с таблицей позиций прейскуранта |
 | Order_position | price | float | Цена |
 | Order_position | discount | float | Скидка |
@@ -144,3 +147,7 @@
 | Smena | price_id | integer | Прейскурант, действующий в текущем торговом дне |
 | Smena | user_open_id | integer | Пользователь, открывший торговый день |
 | Smena | user_close_id | integer | Пользователь, закрывший торговый день |
+
+### Ссылка на модель базы данных
+
+<a id="raw-url" href="https://dbdiagram.io/d/6601407dae072629cedf0d4a">dbdiagram.io</a>

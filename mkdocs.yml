@@ -98,7 +98,7 @@ nav:
     - model.md
     - architecture.md    
     - ui.md
-  - API: api.md
+    - api.md
   - Схемы: diagrams.md
   - Тесты: testcase.md
   - Задачи:
