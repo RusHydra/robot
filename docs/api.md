@@ -1,7 +1,8 @@
 # Раздел с описанием API
 
-## Тут будет спецификация API<br>
+## Спецификация API
 
-Пока добавлен тестовый пример
+API для мобильного приложения и веб-приложения терминала оформления заказа<br>
+
 
 <swagger-ui src= "https://raw.githubusercontent.com/rushydra/robot/main/docs/api/api_robot_v1.yaml" />

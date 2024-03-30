@@ -50,6 +50,13 @@ paths:
         - Просмотр личного кабинета
       security:
         - bearerAuth: []
+      parameters:
+        - in: query
+          name: userId
+          schema:
+            type: integer
+          description: Идентификатор авторизованного пользователя
+      
       summary: Получение данных личного кабинета
       responses:
         '200':
@@ -83,11 +90,11 @@ paths:
           schema:
             type: string
             enum:
-              - burgers
-              - drinks
-              - salads
-              - sideDishes
-              - sweets
+              - бургеры
+              - напитки
+              - салаты
+              - картофель
+              - десерты
           description: Фильтр по категории блюда
         - in: query
           name: page
@@ -204,6 +211,8 @@ paths:
     post:
       tags: 
         - Операции с корзиной
+      security:
+        - bearerAuth: []        
       summary: Выбор способа получения заказа
       description: Определяет способ получения заказа, в зале или на вынос.
       operationId: addOrderObtaining
@@ -225,7 +234,7 @@ paths:
                 type: string
                 example: с собой
         '401':
-          description: Пользователь не утентифицирован
+          description: Пользователь не аутентифицирован
         '404':
           description: Ошибка запроса, отсуствует корзина.
         '500':
@@ -273,7 +282,7 @@ paths:
         - Операции с корзиной
       security:
         - bearerAuth: []
-      summary: Оформление заказа
+      summary: Оформление заказа и выбор способа оплаты
       description: Оформляет заказ на основе текущего содержимого корзины пользователя.
       operationId: checkoutCart
       requestBody:
@@ -453,7 +462,7 @@ components:
         - quantity
       properties:
         dishId:
-          type: string
+          type: integer
           description: Уникальный идентификатор блюда
         quantity:
           type: integer
@@ -529,9 +538,12 @@ components:
         orderId:
           type: integer
           description: Уникальный идентификатор заказа
+        orderNumber:
+          type: string
         message:
           type: string
           description: Сообщение о статусе заказа
+          example: Заказ номер 101 создан
     OrderDishesResponse:
       type: object
       properties:
