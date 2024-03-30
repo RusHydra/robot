@@ -38,19 +38,3 @@ app -> client: Блюдо в корзине
 app--
 end
 @enduml
-
-
-alt
-order -> api++: Добавить в корзину
-order--
-api -> app++: HTTP 201 Блюдо добавлено в корзину
-api--
-app -> client: Блюдо в корзине
-app--
-else
-order++
-order -> api++: Количество не достаточно
-api -> app++: HTTP 400 Отсутствует указанное количество
-api--
-app -> client: Блюдо закончилось, выберете другое
-end
