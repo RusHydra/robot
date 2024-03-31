@@ -7,6 +7,7 @@ theme:
     text: Roboto
     code: Roboto Mono
   features:
+    - navigation.footer
     - navigation.tabs
     - navigation.sections
     - toc.integrate
