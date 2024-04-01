@@ -93,6 +93,13 @@ paths:
       responses:
         '201':
           description: Новый пароль пользователя отправлен в смс сообщении на указанный номер
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    type: integer
         '401':
           description: Пользователь с таким номером телефона не найден
         '500':
