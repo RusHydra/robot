@@ -14,19 +14,23 @@ WF3 Корзина
 
 ![file](images/cart.png)
 
-WF4 Регистрация и вход в систему лояльности
+WF4 Товар не доступен
+
+![file](images/not_available.png)
+
+WF5 Регистрация и вход в систему лояльности
 
 ![file](images/loyality.png)
 
-WF5 Восстановление пароля
+WF6 Восстановление пароля
 
 ![file](images/pass_restore.png)
 
-WF6 Оплата
+WF7 Оплата
 
 ![file](images/pay.png)
 
-WF7 Талон на получение заказа
+WF8 Талон на получение заказа
 
 ![file](images/talon.png)
 

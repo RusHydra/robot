@@ -100,8 +100,8 @@ nav:
     - architecture.md    
     - ui.md
     - api.md
+    - testcase.md
   - Схемы: diagrams.md
-  - Тесты: testcase.md
   - Задачи:
     - План: task.md
     - Шаблоны: template.md

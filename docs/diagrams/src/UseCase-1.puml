@@ -4,37 +4,62 @@ box Система "Робот и Точка" #transparent
 participant  "mobile app" as app 
 boundary "REST API" as api
 participant "Модуль управления заказом" as order
+participant "Модуль регистрации" as auth
 dataBase "DB" as db
 end box 
 hide footbox
-autonumber "<b>[0]"  
+autonumber "<b>[0]"
 
-client -> app++: Добавить в корзину блюдо
-app -> api++: HTTP POST /cart/items
+client -> app++: оформить заказ
+app -> app: Проверить, выбран ли способ получения заказа
+alt не выбран способ получения заказа
+app -> api++: HTTP POST /cart/obtaining
 app--
-api -> order++: createOrder()
+api -> order++: изменение способа получения заказа
 api--
-order -> order: createCart()
-order-> db++: Запрос: проверка наличия блюда
+order -> db++: запрос
 return Ответ
-order -> order++: Обработка ответа
+db--
+order -> order++: обработка ответа
 order--
+order -> api++: способ получения заказа изменён
+order--
+api -> app++: HTTP 201 Информация о способе получения заказа обновлена
+api--
 
-alt
-order -> api++: Количество не достаточно
-order--
-api -> app++: HTTP 400 Отсутствует указанное количество
-api--
-app -> client: Блюдо закончилось, выберете другое
-app--
-else
-order++
-order -> db++: Запрос на обновление корзины
-return Ответ ок
-order -> api++: Добавить в корзину
-api -> app++: HTTP 201 Блюдо добавлено в корзину
-api--
-app -> client: Блюдо в корзине
-app--
+else способ получения заказа указан
+app -> client: предлагает войти в систему лояльности
 end
-@enduml
+app--
+
+
+alt Вход в систему лояльности
+loop max 3
+client -> app++: Выбирает вход в систему лояльности
+app -> api++: HTTP POST auth/login
+api -> auth++: аутентификация клиента
+auth -> db++: проверка пользователя и пароля
+return Ответ
+auth -> api: ответ ок
+auth--
+api -> app: HTTP 200 Успешная аутентификация JWT tocken
+api--
+app -> client: Вы успешно вошли
+app--
+end loop
+else Регистрация в системе лояльности
+ref over client
+Выбирает регистрацию в системе лояльности UC-2
+end ref
+else Пропустить вход и регистрацию в системе лояльности
+ref over client
+Переход к оплате UC-6
+end ref
+end
+
+ 
+
+
+
+
+@enduml  
