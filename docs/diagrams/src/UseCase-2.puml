@@ -1,0 +1,54 @@
+@startuml
+actor "Клиент" as client
+box Система "Робот и Точка" #transparent
+participant  "mobile app" as app 
+boundary "REST API" as api
+participant "Модуль регистрации" as reg
+dataBase "DB" as db
+end box 
+hide footbox
+autonumber "<b>[0]"
+
+client -> app++: Регистрация
+app -> api++: HTTP POST/user
+app--
+api -> reg++: создать нового пользователя
+api--
+reg -> db++: запрос проверка логина
+alt Пользователь с таким логином найден
+db -> reg: Ответ
+db--
+reg -> api++: Есть такой пользователь
+reg--
+api -> app++: HTTP 401
+api--
+app -> client: Сообщение
+app--
+else Пользователь с таким логином не найден
+db++
+db -> reg++: Ответ
+reg -> reg++: создать пользователя
+reg -> db: insert into
+db -> reg: userID
+reg--
+db--
+reg -> api++: пользователь создан
+reg--
+api -> app++: HTTP 200
+api--
+app -> app++: Обработка ответа
+app--
+app -> api++: HTTP auth/login
+app--
+api -> reg++: Аутентификация пользователя
+reg -> reg++: Обработка запроса
+reg--
+reg -> api: Ответ
+reg--
+api -> app++: HTTP 200 JWT Tocken
+api--
+app -> client: Вы успешно зарегистрировались
+end alt
+
+
+@enduml

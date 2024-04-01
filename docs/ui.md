@@ -22,15 +22,19 @@ WF5 Регистрация и вход в систему лояльности
 
 ![file](images/loyality.png)
 
-WF6 Восстановление пароля
+WF6 Успешная регистрация
+
+![file](images/registred.png)
+
+WF7 Восстановление пароля
 
 ![file](images/pass_restore.png)
 
-WF7 Оплата
+WF8 Оплата
 
 ![file](images/pay.png)
 
-WF8 Талон на получение заказа
+WF9 Талон на получение заказа
 
 ![file](images/talon.png)
 
