@@ -101,7 +101,6 @@ nav:
     - ui.md
     - api.md
     - testcase.md
-  - Схемы: diagrams.md
   - Задачи:
     - План: task.md
-    - Шаблоны: template.md
+

@@ -1,0 +1,81 @@
+@startuml
+actor "Клиент" as client
+box Система "Робот и Точка" #transparent
+participant  "mobile app" as app 
+boundary "REST API" as api
+participant "Модуль\nуправления\nзаказом" as order
+participant "Модуль\nоплаты" as pay
+participant "Модуль\nуправления\nроботами" as rcrl
+dataBase "DB" as db
+end box 
+participant "Банк" as bank
+autonumber "<b>[0]"
+
+
+client -> app++: оплата через СБП
+app -> api++: оплата через СБП
+app--
+api -> pay++: Запрос на оплату через СБП
+pay -> api: список доступных банков
+pay--
+api -> app++: запустить плагин СБП
+api--
+app -> client: предложен выбор\nбанков для оплаты
+app--
+client -> app++: выбрал банк
+app -> api++: оплата через СБП
+app--
+api -> pay++: банк выбран
+api--
+pay -> bank++: регистрирует запрос на платёж в банке
+bank -> pay: возвращает данные зарегистрированного платежа
+bank--
+pay -> api++: данные зарегистрированного платежа
+
+loop 60 секунд каждую секунду
+pay++
+pay -> bank++: запрос подтверждения оплаты\nзарегистрированного платежа
+bank -> pay: ответ
+bank--
+end
+pay--
+
+pay -> pay++: обработка ответа
+pay -> db++: update
+db -> pay: ответ
+pay--
+db--
+
+
+
+
+api -> app++: вызов приложения банка
+api--
+app -> client: показать форму подтверждения платежа банка
+app--
+client -> app++: оплачивает в приложении банка
+pay -> api++: заказ оплачен
+api -> app: успешная оплата
+api--
+app -> client: успешная оплата
+
+pay -> order++: заказ оплачен
+pay--
+
+order -> order++: обработка сообщения
+order -> db++: update
+return ответ
+db--
+order--
+order -> rcrl++: заказ на производство
+ref over rcrl
+Формируем задачу для роботов
+end ref
+rcrl--
+order -> api++: номер заказа
+order--
+
+api -> app: номер заказа
+app -> client: номер заказа
+
+@enduml
