@@ -1,5 +1,6 @@
 site_name: Робот и Точка
 repo_name: RusHydra/robot
+site_url: https://rushydra.github.io/robot/
 repo_url: https://github.com/rushydra/robot/
 theme:
   name: material
@@ -7,6 +8,8 @@ theme:
     text: Roboto
     code: Roboto Mono
   features:
+    - navigation.tracking
+    - navigation.instant
     - navigation.footer
     - navigation.tabs
     - navigation.sections
@@ -52,6 +55,9 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.mark
   - attr_list
+  - toc:
+      toc_depth: 4
+      permalink: true
 
 plugins:
    - glightbox:
