@@ -1,0 +1,28 @@
+@startuml Architecture_Context
+!include <C4/C4_Container>
+
+Person(personClient, "Клиент", "Посетитель ресторана")
+Person(personManager, "Менеджер в зале", "Менеджер на гостеприимстве")
+Person(personAssortmentManager, "Менеджер меню", "Менеджер по ассортименту")
+Person(personProductionTechnician, "Техник", "Техник на производстве")
+Person(personАdmin, "Администратор ресторана", "Открывает/закрывает торговый день")
+
+System(systemRobot, "Система автоматизации работы ресторана", "Робот и Точка")
+System_Ext(systemInternetBanking, "Сервис приёма платежей по картам и СБП", "Банковский эквайринг")
+System_Ext(systemInternetPayment, "Сервис приёма онлайн платежей", "Онлайн оплата")
+System_Ext(systemSmsGateway, "Сервис отправки смс", "Отправка пароля в смс")
+System_Ext(systemEmailGateway, "Сервис отправки email", "Отправка чека на e-mail")
+System_Ext(robotController, "Сервис управления роботами", "Управление производственным циклом с использованием роботов")
+
+Rel_Down(personClient, systemRobot, "Использует чтобы оформить заказ и оплатить покупку")
+Rel_Down(personAssortmentManager, systemRobot, "Использует чтобы составлять меню")
+Rel_Down(personManager, systemRobot, "Использует чтобы оформлять возвраты и контролировать инциденты")
+Rel_Down(personProductionTechnician, systemRobot, "Использует чтобы контролировать состояние роботов")
+Rel_Down(personАdmin, systemRobot, "Использует чтобы открывать и закрывать торговый день")
+
+Rel_Down(systemRobot, systemInternetPayment, "Приём онлайн платежей", "Интеграция")
+Rel_Down(systemRobot, systemInternetBanking, "Приём платежей по картам и СБП", "Интеграция")
+Rel_Down(systemRobot, systemEmailGateway, "Отправка e-mail")
+Rel_Down(systemRobot, systemSmsGateway, "Отправка смс", "Интеграция")
+Rel_Down(systemRobot, robotController, "Отправка заданий на производство", "Интеграция")
+@enduml

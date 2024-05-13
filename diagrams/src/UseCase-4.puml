@@ -1,0 +1,41 @@
+@startuml
+actor "Клиент" as client
+box Система "Робот и Точка" #transparent
+participant  "mobile app" as app 
+boundary "REST API" as api
+participant "Модуль управления заказом" as order
+dataBase "DB" as db
+end box 
+hide footbox
+autonumber "<b>[0]"  
+
+client -> app++: Добавить в корзину блюдо
+app -> api++: HTTP POST /cart/items
+app--
+api -> order++: createOrder()
+api--
+order -> order: createCart()
+order-> db++: Запрос: проверка наличия блюда
+return Ответ
+order -> order++: Обработка ответа
+order--
+
+alt
+order -> api++: Количество не достаточно
+order--
+api -> app++: HTTP 400 Отсутствует указанное количество
+api--
+app -> client: Блюдо закончилось, выберете другое
+app--
+else
+order++
+order -> db++: Запрос на обновление корзины
+return Ответ ок
+order -> api++: Добавить в корзину
+order--
+api -> app++: HTTP 201 Блюдо добавлено в корзину
+api--
+app -> client: Блюдо в корзине
+app--
+end
+@enduml

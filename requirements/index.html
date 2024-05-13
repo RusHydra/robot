@@ -1,0 +1,1183 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://rushydra.github.io/robot/requirements/" rel="canonical"/>
+<link href="../business_processes/" rel="prev"/>
+<link href="../model/" rel="next"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.22" name="generator"/>
+<title>Требования к системе - Робот и Точка</title>
+<link href="../assets/stylesheets/main.732c4fb1.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="purple" data-md-color-primary="deep-purple" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#_1">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Робот и Точка" class="md-header__button md-logo" data-md-component="logo" href=".." title="Робот и Точка">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Робот и Точка
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Требования к системе
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="purple" data-md-color-media="" data-md-color-primary="deep-purple" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="purple" data-md-color-media="" data-md-color-primary="deep-purple" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+</form>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/rushydra/robot/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    RusHydra/robot
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="..">
+          
+  
+  Домашняя страница
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../glossary/">
+          
+  
+  Документация
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Робот и Точка" class="md-nav__button md-logo" data-md-component="logo" href=".." title="Робот и Точка">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    Робот и Точка
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/rushydra/robot/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    RusHydra/robot
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Домашняя страница
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+            Домашняя страница
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    Index
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-ellipsis">
+    Документация
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Документация
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../glossary/">
+<span class="md-ellipsis">
+    Глоссарий
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../generalinfo/">
+<span class="md-ellipsis">
+    Концепция
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../business_processes/">
+<span class="md-ellipsis">
+    Описание бизнес процессов
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Требования к системе
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Требования к системе
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      Производительность
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      Безопасность
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      Масштабируемость
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      Доступность
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      Совместимость
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      Поддерживаемость
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+<span class="md-ellipsis">
+      Удобство использования
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+<span class="md-ellipsis">
+      Локализация
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_10">
+<span class="md-ellipsis">
+      Функциональные требования к системе
+    </span>
+</a>
+<nav aria-label="Функциональные требования к системе" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#use-case">
+<span class="md-ellipsis">
+      Use Case диаграмма функций системы для зала ресторана
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#use-case-mvp">
+<span class="md-ellipsis">
+      Описания Use Case для зала ресторана, реализуемых в рамках MVP
+    </span>
+</a>
+<nav aria-label="Описания Use Case для зала ресторана, реализуемых в рамках MVP" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uc-1">
+<span class="md-ellipsis">
+      UC-1 Оформление заказа
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uc-2">
+<span class="md-ellipsis">
+      UC-2 Регистрация в системе лояльности
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uc-3">
+<span class="md-ellipsis">
+      UC-3 Ознакомиться с меню
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uc-4">
+<span class="md-ellipsis">
+      UC-4 Добавить товар в корзину
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uc-5">
+<span class="md-ellipsis">
+      UC-5 Указать в зале или на вынос
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uc-6">
+<span class="md-ellipsis">
+      UC-6 Произвести оплату
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uc-7">
+<span class="md-ellipsis">
+      UC-7 Оплата через СБП
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uc-8">
+<span class="md-ellipsis">
+      UC-8 Списать баллы
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uc-9">
+<span class="md-ellipsis">
+      UC-9 Оплата по карте
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uc-10">
+<span class="md-ellipsis">
+      UC-10 Получить талон с номером заказа
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uc-14">
+<span class="md-ellipsis">
+      UC-14 Оформить отказ от покупки
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uc-16">
+<span class="md-ellipsis">
+      UC-16 Вернуть на карту
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uc-17">
+<span class="md-ellipsis">
+      UC-17 Вернуть через СБП
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#use-case_1">
+<span class="md-ellipsis">
+      Use Case диаграмма функций системы на производстве
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#user-story-map">
+<span class="md-ellipsis">
+      Карта пользовательских историй User Story Map
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#miro">
+<span class="md-ellipsis">
+      Карта пользовательских историй в Miro
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../model/">
+<span class="md-ellipsis">
+    Информационная модель системы
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../architecture/">
+<span class="md-ellipsis">
+    Компонентная архитектура
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ui/">
+<span class="md-ellipsis">
+    Пользовательский интерфейс системы
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../api/">
+<span class="md-ellipsis">
+    API приложения
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../testcase/">
+<span class="md-ellipsis">
+    Задачи
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.</span> Требования к системе<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<h2 id="_2"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.1</span> Производительность<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<p><strong><code>NFPER1</code></strong> Система должна поддерживать 100 одновременных сессий.<br/>
+<strong><code>NFPER2</code></strong> Система должна обеспечить обработку 5000 заказов в сутки.<br/></p>
+<h2 id="_3"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.2</span> Безопасность<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<p><strong><code>NFSEC1</code></strong> Система должна предусматривать аутентификацию пользователей в системе по логину и паролю.<br/>
+<strong><code>NFSEC2</code></strong> Система не должна хранить в себе персональных данных пользователей.<br/></p>
+<h2 id="_4"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.3</span> Масштабируемость<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
+<p><strong><code>NFEXT1</code></strong> Система должна обеспечить возможность увеличения количества активных сессий в 100 раз, без снижения производительности, за счёт увеличения доступных вычислительных ресурсов, до 10000 активных сессий.<br/></p>
+<h2 id="_5"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.4</span> Доступность<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
+<p><strong><code>NFAVL1</code></strong> Система должна быть доступна пользователю в режиме 24/7.<br/>
+<strong><code>NFAVL2</code></strong> Допустимое время простоя системы не более 10 минут в сутки.<br/></p>
+<h2 id="_6"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.5</span> Совместимость<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
+<p><strong><code>NFCOM1</code></strong> Система должна размещаться и работать на базе облачной инфраструктуры.<br/>
+<strong><code>NFCOM2</code></strong> Мобильное приложение должно поддерживать работу в операционных системах iOS 4.3 и более поздних и Android 11 и более поздних<br/>
+<strong><code>NFCOM3</code></strong> Десктопный клиент должен работать в среде Windows<br/>
+<strong><code>NFCOM4</code></strong> Система должна обеспечивать поддержку интеграции с терминалом приёма карт на стойке заказов<br/>
+<strong><code>NFCOM5</code></strong> Система должна обеспечить возможность интеграции с платёжными системами для приёма безналичных платежей<br/></p>
+<h2 id="_7"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.6</span> Поддерживаемость<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
+<p><strong><code>NFSUP1</code></strong> В системе должны журналироваться все события, связанные с запросами статусов оплаты у внешних систем.<br/>
+<strong><code>NFSUP2</code></strong> В системе должны журналироваться все события, связанные с операциями в системе лояльности.<br/></p>
+<h2 id="_8"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.7</span> Удобство использования<a class="headerlink" href="#_8" title="Permanent link">¶</a></h2>
+<p><strong><code>NFUSE1</code></strong> Система должна иметь графический интерфейс администратора, позволяющий настраивать параметры системы.<br/></p>
+<h2 id="_9"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.8</span> Локализация<a class="headerlink" href="#_9" title="Permanent link">¶</a></h2>
+<p><strong><code>NFLOC1</code></strong> Система должна поддерживать русский язык и иметь интерфейс пользователя на русском языке<br/></p>
+<h2 id="_10"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.9</span> Функциональные требования к системе<a class="headerlink" href="#_10" title="Permanent link">¶</a></h2>
+<h3 id="use-case"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.9.1</span> Use Case диаграмма функций системы для зала ресторана<a class="headerlink" href="#use-case" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../diagrams/out/resto_hall_usecase.svg"><img alt="file" src="../diagrams/out/resto_hall_usecase.svg"/></a></p>
+<h3 id="use-case-mvp"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.9.2</span> Описания Use Case для зала ресторана, реализуемых в рамках MVP<a class="headerlink" href="#use-case-mvp" title="Permanent link">¶</a></h3>
+<h4 id="uc-1"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.9.2.1</span> UC-1 Оформление заказа<a class="headerlink" href="#uc-1" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Вариант использования</th>
+<th>UC-1 Оформление заказа</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Область действия</td>
+<td>Мобильное приложение или веб-приложение</td>
+</tr>
+<tr>
+<td>Основное действующее лицо</td>
+<td>Пользователь приложения</td>
+</tr>
+<tr>
+<td>Предусловие</td>
+<td>Пользователь находится в корзине, в корзину добавлена хотя бы одна позиция</td>
+</tr>
+<tr>
+<td>Результат сценария</td>
+<td>Заказ оформлен, пользователь переходит к оплате</td>
+</tr>
+<tr>
+<td>Описание</td>
+<td>1. Пользователь завершил формирование корзины и начинает оформление заказа<br/>2. Система просит выбрать способ получения заказа, с собой или в зале.<br/>3. Пользователь выбирает способ получения заказа<br/>4. Система предлагает пользователю войти в систему лояльности.<br/>5. Пользователь выбирает вход в систему лояльности</td>
+</tr>
+<tr>
+<td>Альтернативный сценарий</td>
+<td>4. Система предлагает пользователю регистрацию в системе лояльности<br/>4.1 Пользователь соглашается.<br/>4.2 Система запускает сценарий UC-2 Регистрация в системе лояльности<br/>5. Пользователь отказывается входить в систему лояльности.<br/>5.1 Система запускает сценарий оплаты заказа UC-6</td>
+</tr>
+<tr>
+<td>Исключительные ситуации</td>
+<td>1. Пользователь не совершает действий в течении 2-х минут<br/>2. Система спрашивает пользователя, будет ли он продолжать взаимодействие<br/>3. Пользователь не совершает действий в течении 2-х минут после запроса системы<br/>4. Система переходит на начальный экран</td>
+</tr>
+<tr>
+<td>Диаграмма</td>
+<td><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../diagrams/out/UseCase-1.svg"><img alt="" src="../diagrams/out/UseCase-1.svg" width="100"/></a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="uc-2"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.9.2.2</span> UC-2 Регистрация в системе лояльности<a class="headerlink" href="#uc-2" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Вариант использования</th>
+<th>UC-2 Регистрация в системе лояльности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Область действия</td>
+<td>Мобильное приложение или веб-приложение</td>
+</tr>
+<tr>
+<td>Основное действующее лицо</td>
+<td>Пользователь приложения</td>
+</tr>
+<tr>
+<td>Предусловие</td>
+<td>Пользователь начал оформление заказа</td>
+</tr>
+<tr>
+<td>Результат сценария</td>
+<td>Пользователь зарегистрировался в системе лояльности</td>
+</tr>
+<tr>
+<td>Описание</td>
+<td>1. Система предлагает пользователю зарегистрироваться в системе лояльности<br/>2. Пользователь подтверждает согласие на регистрацию<br/>3. Система предлагает ввести имя, номер телефона, пароль и подтверждение пароля.<br/>4. Пользователь имя, номер телефона, пароль и подтверждение пароля.<br/>5. Система проверяет совпадение введённого номера телефона с уже зарегистрированными пользователями.<br/>6. Система аутентифицирует пользователя и отображает сообщение об успешном входе в систему лояльности</td>
+</tr>
+<tr>
+<td>Альтернативный сценарий</td>
+<td>2.1 Пользователь отказывается регистрироваться в системе лояльности<br/>2.2 Система прекращает выполнение сценария<br/>5. Пользователь с таким номером телефона уже зарегистрирован. Система предлагает выполнить вход или восстановить пароль.</td>
+</tr>
+<tr>
+<td>Исключительные ситуации</td>
+<td>1. Пользователь не совершает действий в течении 2-х минут<br/>2. Система спрашивает пользователя, будет ли он продолжать взаимодействие<br/>3. Пользователь не совершает действий в течении 2-х минут после запроса системы<br/>4. Система переходит на начальный экран</td>
+</tr>
+<tr>
+<td>Диаграмма</td>
+<td><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../diagrams/out/UseCase-2.svg"><img alt="" src="../diagrams/out/UseCase-2.svg" width="100"/></a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="uc-3"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.9.2.3</span> UC-3 Ознакомиться с меню<a class="headerlink" href="#uc-3" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Вариант использования</th>
+<th>UC-3 Ознакомиться с меню</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Область действия</td>
+<td>Мобильное приложение или веб-приложение</td>
+</tr>
+<tr>
+<td>Основное действующее лицо</td>
+<td>Пользователь приложения</td>
+</tr>
+<tr>
+<td>Предусловие</td>
+<td>Пользователь находится на экране меню</td>
+</tr>
+<tr>
+<td>Результат сценария</td>
+<td>Пользователь ознакомился с ассортиментом товаров</td>
+</tr>
+<tr>
+<td>Описание</td>
+<td>1. Пользователь выбирает раздел меню<br/>2. Система отображает товары выбранного раздела<br/>3. Пользователь выбирает товар<br/>4. Система отображает детальное описание товара</td>
+</tr>
+<tr>
+<td>Альтернативный сценарий</td>
+<td>3.1. Пользователь выбирает товар, помеченный как недоступный<br/>3.2. Система информирует пользователя о недоступности товара и предлагает замену</td>
+</tr>
+<tr>
+<td>Исключительные ситуации</td>
+<td>1. Пользователь не совершает действий в течении 2-х минут<br/>2. Система спрашивает пользователя, будет ли он продолжать взаимодействие<br/>3. Пользователь не совершает действий в течении 2-х минут после запроса системы<br/>4. Система переходит на начальный экран</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uc-4"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.9.2.4</span> UC-4 Добавить товар в корзину<a class="headerlink" href="#uc-4" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Вариант использования</th>
+<th>UC-4 Добавить товар в корзину</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Область действия</td>
+<td>Мобильное приложение или веб-приложение</td>
+</tr>
+<tr>
+<td>Основное действующее лицо</td>
+<td>Пользователь приложения</td>
+</tr>
+<tr>
+<td>Предусловие</td>
+<td>Пользователь находится на детальной странице товара</td>
+</tr>
+<tr>
+<td>Результат сценария</td>
+<td>Товар перемещён в корзину</td>
+</tr>
+<tr>
+<td>Описание</td>
+<td>1. Пользователь выбирает количество товара, которое он хочет переместить в корзину.<br/>2. Система проверяет возможность добавления товара.<br/>3. Пользователь перемещает товар в корзину.<br/>4. Система добавляет товар в состав корзины пользователя.<br/>5. Система отображает количество позиций в корзине</td>
+</tr>
+<tr>
+<td>Альтернативный сценарий</td>
+<td>3.1. Пользователь получает сообщение об отсуствии товара<br/>3.2. Система предлагает выбрать другое блюдо<br/>3.2. Система возвращается к шагу 1.</td>
+</tr>
+<tr>
+<td>Исключительные ситуации</td>
+<td>1. Пользователь не совершает действий в течении 2-х минут<br/>2. Система спрашивает пользователя, будет ли он продолжать взаимодействие<br/>3. Пользователь не совершает действий в течении 2-х минут после запроса системы<br/>4. Система переходит на начальный экран</td>
+</tr>
+<tr>
+<td>Диаграмма</td>
+<td><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../diagrams/out/UseCase-4.svg"><img alt="" src="../diagrams/out/UseCase-4.svg" width="100"/></a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="uc-5"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.9.2.5</span> UC-5 Указать в зале или на вынос<a class="headerlink" href="#uc-5" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Вариант использования</th>
+<th>UC-5 Указать в зале или на вынос</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Область действия</td>
+<td>Мобильное приложение или веб-приложение</td>
+</tr>
+<tr>
+<td>Основное действующее лицо</td>
+<td>Пользователь приложения</td>
+</tr>
+<tr>
+<td>Предусловие</td>
+<td>Пользователь находится на странице корзины</td>
+</tr>
+<tr>
+<td>Результат сценария</td>
+<td>Пользователь выбрал, каким способом он хочет забрать заказ</td>
+</tr>
+<tr>
+<td>Описание</td>
+<td>1. Система предлагает пользователю выбор из двух способов забрать заказ: с собой или в зале.<br/>2. Пользователь выбирает один из способов забрать заказ.<br/>3. Система запоминает выбор пользователя для текущего заказа</td>
+</tr>
+<tr>
+<td>Альтернативный сценарий</td>
+<td>2.1. Пользователь не выбрал ни один из вариантов<br/>2.2. Система предлагает выбрать способ забрать заказ в момент перехода пользователя к оплате заказа.</td>
+</tr>
+<tr>
+<td>Исключительные ситуации</td>
+<td>1. Пользователь не совершает действий в течении 2-х минут<br/>2. Система спрашивает пользователя, будет ли он продолжать взаимодействие<br/>3. Пользователь не совершает действий в течении 2-х минут после запроса системы<br/>4. Система переходит на начальный экран</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uc-6"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.9.2.6</span> UC-6 Произвести оплату<a class="headerlink" href="#uc-6" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Вариант использования</th>
+<th>UC-6 Произвести оплату</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Область действия</td>
+<td>Мобильное приложение или веб-приложение</td>
+</tr>
+<tr>
+<td>Основное действующее лицо</td>
+<td>Пользователь приложения</td>
+</tr>
+<tr>
+<td>Предусловие</td>
+<td>Пользователь начал процедуру оформления заказа<br/>Пользователь вошёл в систему лояльности или отказался от входа и регистрации</td>
+</tr>
+<tr>
+<td>Результат сценария</td>
+<td>Пользователь выбрал способ оплаты товара</td>
+</tr>
+<tr>
+<td>Описание</td>
+<td>1. Пользователь инициирует оплату заказа<br/>2. Система проверяет, вошёл ли пользователь в систему лояльности<br/>3. Система предлагает выбрать способ оплаты заказа: списать баллы, по карте или СБП<br/>4. Пользователь выбирает один из способов оплатить заказ<br/>5. Система переходит к сценарию оплаты в зависимости от выбора пользователя.</td>
+</tr>
+<tr>
+<td>Альтернативный сценарий</td>
+<td>2.1 Пользователь отказался от входа в систему лояльности<br/>2.2 Система предлагает выбор из двух способов оплаты: по карте или через СБП<br/>4.1. Пользователь выбирает возврат в корзину.<br/>4.2. Система возвращается к шагу 1.</td>
+</tr>
+<tr>
+<td>Исключительные ситуации</td>
+<td>1. Пользователь не совершает действий в течении 2-х минут<br/>2. Система спрашивает пользователя, будет ли он продолжать взаимодействие<br/>3. Пользователь не совершает действий в течении 2-х минут после запроса системы<br/>4. Система переходит на начальный экран</td>
+</tr>
+<tr>
+<td>Диаграмма</td>
+<td><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../diagrams/out/UseCase-6.svg"><img alt="" src="../diagrams/out/UseCase-6.svg" width="100"/></a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="uc-7"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.9.2.7</span> UC-7 Оплата через СБП<a class="headerlink" href="#uc-7" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Вариант использования</th>
+<th>UC-7 Оплата через СБП</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Область действия</td>
+<td>Мобильное приложение или веб-приложение</td>
+</tr>
+<tr>
+<td>Основное действующее лицо</td>
+<td>Пользователь приложения</td>
+</tr>
+<tr>
+<td>Предусловие</td>
+<td>Пользователь выбрал способ оплаты заказа: оплата через СБП</td>
+</tr>
+<tr>
+<td>Результат сценария</td>
+<td>Заказ оплачен</td>
+</tr>
+<tr>
+<td>Описание</td>
+<td>1. Система предлагает пользователю оплату через СБП и отображает сумму оплаты<br/>2. Пользователь подтверждает оплату через СБП<br/>3. Система запускает оплату через СБП<br/>4. Пользователь выполняет оптату<br/>5. Система запрашивает у СБП подтверждение оплаты.<br/>6. Система получает подтверждение оплаты.<br/>7. Система информирует пользователя об успешной оплате.<br/>8. Система печатает чек.</td>
+</tr>
+<tr>
+<td>Альтернативный сценарий</td>
+<td>6.1. Система не получает подтверждения оплаты.<br/>6.2 Система сообщает пользователю о том что оплата не выполена.<br/>6.3 Система возвращается на шаг 1.</td>
+</tr>
+<tr>
+<td>Исключительные ситуации</td>
+<td>1. Пользователь не совершает действий в течении 2-х минут<br/>2. Система спрашивает пользователя, будет ли он продолжать взаимодействие<br/>3. Пользователь не совершает действий в течении 2-х минут после запроса системы<br/>4. Система возращается на главный экран</td>
+</tr>
+<tr>
+<td>Диаграмма</td>
+<td><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../diagrams/out/UseCase-7.svg"><img alt="" src="../diagrams/out/UseCase-7.svg" width="100"/></a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="uc-8"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.9.2.8</span> UC-8 Списать баллы<a class="headerlink" href="#uc-8" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Вариант использования</th>
+<th>UC-8 Списать баллы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Область действия</td>
+<td>Мобильное приложение или веб-приложение</td>
+</tr>
+<tr>
+<td>Основное действующее лицо</td>
+<td>Пользователь приложения</td>
+</tr>
+<tr>
+<td>Предусловие</td>
+<td>Пользователь выбрал способ оплаты заказа: списание баллов</td>
+</tr>
+<tr>
+<td>Результат сценария</td>
+<td>Стоимость заказа уменьшена за счёт списания баллов</td>
+</tr>
+<tr>
+<td>Описание</td>
+<td>1. Система отображает количество доступных для списания баллов и сумму заказа.<br/>2. Пользователь указывает количество баллов, которое хочет списать.<br/>3. Система запрашивает подтверждение списания выбранного пользователем количества баллов.<br/>4. Пользователь подтверждает списание.<br/>5. Система отображает стоимость заказа с учётом списания баллов.</td>
+</tr>
+<tr>
+<td>Альтернативный сценарий</td>
+<td>5.1. Пользователь указал количество баллов равное или больше стоимости заказа на шаге 2.<br/>5.2 Система списывает сумму баллов, не превышающих стоимость заказа.<br/>5.3. Система информирует пользователя, что заказ оплачен.</td>
+</tr>
+<tr>
+<td>Исключительные ситуации</td>
+<td>Пользователь не совершает действий в течении 2-х минут<br/>Система спрашивает пользователя, будет ли он продолжать взаимодействие<br/>Пользователь не совершает действий в течении 2-х минут после запроса системы<br/>Система переходит на начальный экран</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uc-9"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.9.2.9</span> UC-9 Оплата по карте<a class="headerlink" href="#uc-9" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Вариант использования</th>
+<th>UC-7 Оплата по карте</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Область действия</td>
+<td>Веб-приложение</td>
+</tr>
+<tr>
+<td>Основное действующее лицо</td>
+<td>Пользователь приложения</td>
+</tr>
+<tr>
+<td>Предусловие</td>
+<td>Пользователь выбрал способ оплаты заказа: оплата по карте</td>
+</tr>
+<tr>
+<td>Результат сценария</td>
+<td>Заказ оплачен</td>
+</tr>
+<tr>
+<td>Описание</td>
+<td>1. Система предлагает пользователю оплату картой и отображает сумму оплаты.<br/>2. Пользователь подтверждает оплату картой<br/>3. Система запускает оплату терминал оплаты картой.<br/>4. Пользователь прикладывает карту к терминалу.<br/>5. Система запрашивает у банка подтверждение оплаты.<br/>6. Система получает подтверждение оплаты.<br/>7. Система информирует пользователя об успешной оплате.<br/>8. Система печатает чек.</td>
+</tr>
+<tr>
+<td>Альтернативный сценарий</td>
+<td>6.1. Система не получает подтверждения оплаты.<br/>6.2 Система сообщает пользователю о том что оплата не выполена.<br/>6.3 Система возвращается на шаг 1.</td>
+</tr>
+<tr>
+<td>Исключительные ситуации</td>
+<td>1. Пользователь не совершает действий в течении 2-х минут<br/>2. Система спрашивает пользователя, будет ли он продолжать взаимодействие<br/>3. Пользователь не совершает действий в течении 2-х минут после запроса системы<br/>4. Система возращается на главный экран</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uc-10"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.9.2.10</span> UC-10 Получить талон с номером заказа<a class="headerlink" href="#uc-10" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Вариант использования</th>
+<th>UC-10 Получить талон с номером заказа</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Область действия</td>
+<td>Веб-приложение</td>
+</tr>
+<tr>
+<td>Основное действующее лицо</td>
+<td>Пользователь приложения</td>
+</tr>
+<tr>
+<td>Предусловие</td>
+<td>Пользователь успешно завершил оплату заказа</td>
+</tr>
+<tr>
+<td>Результат сценария</td>
+<td>Пользователь получил талон с номером заказа</td>
+</tr>
+<tr>
+<td>Описание</td>
+<td>1. Система отображает номер оплаченного заказа на экране<br/>2. Система печатает талон с номером заказа.<br/>2. Пользователь видит номер заказа.<br/>4. Пользователь берёт напечатанный талон с номером заказа.<br/>3. Система ожидает 20 секунд и переходит на начальный экран</td>
+</tr>
+<tr>
+<td>Альтернативный сценарий</td>
+<td></td>
+</tr>
+<tr>
+<td>Исключительные ситуации</td>
+<td>1. Пользователь не совершает действий в течении 2-х минут<br/>2. Система спрашивает пользователя, будет ли он продолжать взаимодействие<br/>3. Пользователь не совершает действий в течении 2-х минут после запроса системы<br/>4. Система переходит на начальный экран</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uc-14"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.9.2.11</span> UC-14 Оформить отказ от покупки<a class="headerlink" href="#uc-14" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Вариант использования</th>
+<th>UC-14 Оформить отказ от покупки</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Область действия</td>
+<td>Мобильное приложение или веб-приложение</td>
+</tr>
+<tr>
+<td>Основное действующее лицо</td>
+<td>Менеджер по гостеприимству</td>
+</tr>
+<tr>
+<td>Предусловие</td>
+<td>Посетитель запросил отказ от заказа<br/>Менеджер по гостеприимству авторизован в системе с ролью менеджера по гостеприимству</td>
+</tr>
+<tr>
+<td>Результат сценария</td>
+<td>Заказ отменён</td>
+</tr>
+<tr>
+<td>Описание</td>
+<td>1. Менеджер по гостеприимству уточняет у посетителя, какой заказ он хочет отменить.<br/>2. Посетитель сообщает номер заказа.<br/>3. Менеджер по гостеприимству запрашивает у системы список не выданных заказов.<br/>4. Система отображает список заказов, которые не были выданы.<br/>5. Менеджер по гостеприимству находит нужный заказ.<br/>6. Менеджер по гостеприимству отменяет выполнение заказа.<br/>7. Система помечает заказ как отменённый, удаляет заказ из очереди заказов на производство.<br/>8. Система помечает заказ как не доступный к выдаче и удаляет заказ из очереди заказов на выдачу.</td>
+</tr>
+<tr>
+<td>Альтернативный сценарий</td>
+<td>5.1 Менеджер по гостеприимству не находит заказ в очереди не выданных заказов.<br/>5.2 Менеджер по гостеприимству запрашивает у системы список выданных заказов.<br/>5.3 Система отображает список выданных заказов.<br/>5.4 Менеджер по гостеприимству находит заказ в списке выданных.<br/>5.5. Менеджер по гостеприимству решает конфликтную ситуацию с посетителем, который хочет отменить уже выданный заказ.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uc-16"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.9.2.12</span> UC-16 Вернуть на карту<a class="headerlink" href="#uc-16" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Вариант использования</th>
+<th>UC-16 Вернуть на карту</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Область действия</td>
+<td>Мобильное приложение или веб-приложение</td>
+</tr>
+<tr>
+<td>Основное действующее лицо</td>
+<td>Менеджер по гостеприимству</td>
+</tr>
+<tr>
+<td>Предусловие</td>
+<td>Заказ посетителя отменён.<br/>Посетитель требует возврат денег<br/>Оплата заказа была выполнена по карте<br/>Менеджер по гостеприимству авторизован в системе с ролью менеджера по гостеприимству</td>
+</tr>
+<tr>
+<td>Результат сценария</td>
+<td>Запущена процедура возврата средств на карту посетителя</td>
+</tr>
+<tr>
+<td>Описание</td>
+<td>1. Менеджер по гостеприимству запрашивает у системы список отменённых заказов.<br/>2. Система формирует список отменённых заказов.<br/>3. Менеджер по гостеприимству выбирает отменённый заказ.<br/>4. Система отображает информацию о заказе и способе оплаты.<br/>5. Менеджер по гостеприимству убеждается, что оплата была выполена по карте.<br/>6. Менеджер по гостеприимству запускает процедуру отмены оплаты по карте.<br/>7. Система формирует запрос отмены оплаты в банк.<br/>8. Система ожидает подтверждения отмены оплаты.<br/>9. Система получает подтверждение отмены оплаты и информирует менеджера по гостеприимству о успешном завершении операции.<br/>10. Менеджер по гостеприимству информирует посетителя о том что средства будут возвращены на карту.</td>
+</tr>
+<tr>
+<td>Альтернативный сценарий</td>
+<td>5.1 Менеджер по гостеприимству видит что оплата была выполнена через СБП.<br/>5.2 Менеджер по гостеприимству запускает отмену оплаты через СБП.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uc-17"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.9.2.13</span> UC-17 Вернуть через СБП<a class="headerlink" href="#uc-17" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Вариант использования</th>
+<th>UC-17 Вернуть через СБП</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Область действия</td>
+<td>Мобильное приложение или веб-приложение</td>
+</tr>
+<tr>
+<td>Основное действующее лицо</td>
+<td>Менеджер по гостеприимству</td>
+</tr>
+<tr>
+<td>Предусловие</td>
+<td>Заказ посетителя отменён.<br/>Посетитель требует возврат денег<br/>Оплата заказа была выполнена через СБП<br/>Менеджер по гостеприимству авторизован в системе с ролью менеджера по гостеприимству</td>
+</tr>
+<tr>
+<td>Результат сценария</td>
+<td>Запущена процедура возврата средств посетителю через СБП</td>
+</tr>
+<tr>
+<td>Описание</td>
+<td>1. Менеджер по гостеприимству запрашивает у системы список отменённых заказов.<br/>2. Система формирует список отменённых заказов.<br/>3. Менеджер по гостеприимству выбирает отменённый заказ.<br/>4. Система отображает информацию о заказе и способе оплаты.<br/>5. Менеджер по гостеприимству убеждается, что оплата была выполена через СБП.<br/>6. Менеджер по гостеприимству запускает процедуру отмены оплаты по номеру телефона посетителя через СБП.<br/>7. Система формирует запрос отмены оплаты в банк.<br/>8. Система ожидает подтверждения отмены оплаты.<br/>9. Система получает подтверждение отмены оплаты и информирует менеджера по гостеприимству о успешном завершении операции.<br/>10. Менеджер по гостеприимству информирует посетителя о том что средства будут возвращены по номеру телефона через СБП.</td>
+</tr>
+<tr>
+<td>Альтернативный сценарий</td>
+<td>5.1 Менеджер по гостеприимству видит что оплата была выполнена по карте.<br/>5.2 Менеджер по гостеприимству запускает отмену оплаты по карте.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="use-case_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.9.3</span> Use Case диаграмма функций системы на производстве<a class="headerlink" href="#use-case_1" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../diagrams/out/resto_kitchen_usecase.svg"><img alt="file" src="../diagrams/out/resto_kitchen_usecase.svg"/></a></p>
+<h2 id="user-story-map"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.10</span> Карта пользовательских историй User Story Map<a class="headerlink" href="#user-story-map" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/Userstorymap_1.jpg"><img alt="Userstory" src="../images/Userstorymap_1.jpg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/US_%D0%9A%D0%BB%D0%B8%D0%B5%D0%BD%D1%82.jpg"><img alt="Userstory" src="../images/US_%D0%9A%D0%BB%D0%B8%D0%B5%D0%BD%D1%82.jpg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/US_%D0%9C%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80_%D0%BF%D0%BE_%D0%B0%D1%81%D1%81%D0%B0%D1%80%D1%82%D0%B8%D0%BC%D0%B5%D0%BD%D1%82%D1%83.jpg"><img alt="Userstory" src="../images/US_%D0%9C%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80_%D0%BF%D0%BE_%D0%B0%D1%81%D1%81%D0%B0%D1%80%D1%82%D0%B8%D0%BC%D0%B5%D0%BD%D1%82%D1%83.jpg"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="../images/US_%D0%9C%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80_%D0%BF%D0%BE_%D0%B3%D0%BE%D1%81%D1%82%D0%B5%D0%BF%D1%80%D0%B8%D0%B8%D0%BC%D1%81%D1%82%D0%B2%D1%83_%D0%B8_%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3.jpg"><img alt="Userstory" src="../images/US_%D0%9C%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80_%D0%BF%D0%BE_%D0%B3%D0%BE%D1%81%D1%82%D0%B5%D0%BF%D1%80%D0%B8%D0%B8%D0%BC%D1%81%D1%82%D0%B2%D1%83_%D0%B8_%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3.jpg"/></a></p>
+<p><strong>Defenition of Ready</strong> </p>
+<ul>
+<li>US имеет ясное и краткое описание</li>
+<li>DоD определены и утверждены командой</li>
+<li>Все необходимые ресурсы, технические спецификации и прототипы доступны</li>
+<li>Все зависимости от других US зафиксированы</li>
+<li>US приоритезирована и оценена командой</li>
+<li>Команда договорилась об Acceptance Criteria</li>
+</ul>
+<p><strong>Defenition of Done</strong> </p>
+<ul>
+<li>Реализация US соответствует Acceptance Criteria</li>
+<li>Код, связанный с историей, выложен в систему контроля версий</li>
+<li>Историю принял аналитик</li>
+<li>Тестовые сценарии успешно пройдены</li>
+<li>Изменения отражены в документации</li>
+</ul>
+<h2 id="miro"><span class="enumerate-headings-plugin enumerate-heading-plugin">3.11</span> Карта пользовательских историй в Miro<a class="headerlink" href="#miro" title="Permanent link">¶</a></h2>
+<p><a href="https://miro.com/app/board/uXjVNomrtxc=/" id="raw-url">Ссылка на полную UserStoryMap в Miro</a></p>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Описание бизнес процессов" class="md-footer__link md-footer__link--prev" href="../business_processes/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Previous
+              </span>
+<div class="md-ellipsis">
+                Описание бизнес процессов
+              </div>
+</div>
+</a>
+<a aria-label="Next: Информационная модель системы" class="md-footer__link md-footer__link--next" href="../model/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Next
+              </span>
+<div class="md-ellipsis">
+                Информационная модель системы
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking", "navigation.instant", "navigation.footer", "navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.5cfa9459.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script><script>document$.subscribe(() => {
+            window.update_swagger_ui_iframe_height = function (id) {
+                var iFrameID = document.getElementById(id);
+                if (iFrameID) {
+                    full_height = (iFrameID.contentWindow.document.body.scrollHeight + 80) + "px";
+                    iFrameID.height = full_height;
+                    iFrameID.style.height = full_height;
+                }
+            }
+        
+            let iframe_id_list = []
+            var iframes = document.getElementsByClassName("swagger-ui-iframe");
+            for (var i = 0; i < iframes.length; i++) { 
+                iframe_id_list.push(iframes[i].getAttribute("id"))
+            }
+        
+            let ticking = true;
+            
+            document.addEventListener('scroll', function(e) {
+                if (!ticking) {
+                    window.requestAnimationFrame(()=> {
+                        let half_vh = window.innerHeight/2;
+                        for(var i = 0; i < iframe_id_list.length; i++) {
+                            let element = document.getElementById(iframe_id_list[i])
+                            if(element==null){
+                                return
+                            }
+                            let diff = element.getBoundingClientRect().top
+                            if(element.contentWindow.update_top_val){
+                                element.contentWindow.update_top_val(half_vh - diff)
+                            }
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        
+            const dark_scheme_name = "slate"
+            
+            window.scheme = document.body.getAttribute("data-md-color-scheme")
+            const options = {
+                attributeFilter: ['data-md-color-scheme'],
+            };
+            function color_scheme_callback(mutations) {
+                for (let mutation of mutations) {
+                    if (mutation.attributeName === "data-md-color-scheme") {
+                        scheme = document.body.getAttribute("data-md-color-scheme")
+                        var iframe_list = document.getElementsByClassName("swagger-ui-iframe")
+                        for(var i = 0; i < iframe_list.length; i++) {
+                            var ele = iframe_list.item(i);
+                            if (ele) {
+                                if (scheme === dark_scheme_name) {
+                                    ele.contentWindow.enable_dark_mode();
+                                } else {
+                                    ele.contentWindow.disable_dark_mode();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            observer = new MutationObserver(color_scheme_callback);
+            observer.observe(document.body, options);
+            })</script></body>
+</html>

@@ -1,0 +1,93 @@
+@startuml
+actor "Клиент" as client
+box Система "Робот и Точка" #transparent
+participant  "mobile app" as app 
+boundary "REST API" as api
+participant "Модуль\nуправления\nзаказом" as order
+participant "Модуль\nрегистрации" as reg
+participant "Модуль\nлояльности" as loyality
+participant "Модуль\nоплаты" as pay
+participant "Модуль\nуправления\nроботами" as rcrl
+dataBase "DB" as db
+end box 
+autonumber "<b>[0]"
+
+client -> app++: Оформить заказ
+app -> api++:
+app--
+opt
+api -> order++: способ получения\nвыбран?
+return да
+end opt
+opt
+api -> reg++: пользователь\nаутентифицирован?
+return да
+end opt
+opt
+api -> loyality++: баланс баллов?
+return количество баллов
+end opt
+api -> app++:
+api--
+app -> client: выберете способ оплаты
+app--
+opt списать баллы
+client -> app++: списать баллы
+app -> api++: списать баллы
+app--
+api -> loyality++: запрос на списание баллов
+api--
+loyality -> loyality++: обработка\nзапроса
+loyality--
+loyality -> db++: запрос изменение\nбаланса баллов
+return ответ
+db--
+loyality -> order++: изменение цены заказа
+loyality--
+order -> order++: обработка запроса
+order -> db++: запрос изменение цены заказа
+return ответ
+order--
+order -> api++: изменение цены заказа
+order--
+api -> app++: новая цена заказа
+api--
+app -> client: показать\nновую цену заказа\nи баланс баллов
+app--
+end opt
+alt оплата по карте
+client -> app++: оплата по карте
+app -> api++: оплата по карте
+app--
+api -> pay++:
+api--
+ref over pay
+Запрос внешнего шлюза оплаты
+end ref
+pay -> order++: заказ оплачен
+pay--
+order -> order++: обработка сообщения
+order -> db++: update
+return ответ
+db--
+order--
+order -> rcrl++: заказ на производство
+ref over rcrl
+Формируем задачу для роботов
+end ref
+rcrl--
+order -> api++: заказ оплачен
+order--
+
+pay--
+api -> app++: успешная оплата
+api--
+app -> client: Показать номер талона
+app--
+
+else оплата через СБП
+ref over client
+Оплата через СПБ
+end ref
+end alt
+@enduml
