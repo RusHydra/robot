@@ -88,7 +88,7 @@ paths:
           description: Внутренняя ошибка сервера
   
   /user{phone}/password:
-    put:
+    patch:
       tags: 
         - Операции с пользователем
       summary: Изменение пароля пользователя
@@ -314,7 +314,7 @@ paths:
         '500':
           description: Внутренняя ошибка сервера
   /cart/items/{dishId}:
-    put:
+    patch:
       tags: 
         - Операции с корзиной
       security:
@@ -408,7 +408,7 @@ paths:
           description: Ошибка запроса, заказ не найден
         '500':
           description: Внутренняя ошибка сервера
-    put:
+    patch:
       tags: 
         - Операции с заказом    
       summary: Изменение статуса заказа
@@ -471,6 +471,66 @@ paths:
         '500':
           description: Внутренняя ошибка сервера
    
+  /order/{userId}/history:
+    get:
+      tags: 
+        - Операции с заказом
+      security:
+        - bearerAuth: []
+      summary: История заказов
+      description: Позволяет получить заказы пользователя
+      operationId: OrdersList
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: Уникальный идентификатор пользователя
+          schema:
+            type: integer
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+          description: Номер страницы для пагинации
+        - in: query
+          name: pageSize
+          schema:
+            type: integer
+            default: 10
+            maximum: 20
+          description: Количество заказов на странице
+    
+      responses:
+        '200':  
+          description: Список заказов
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                    description: Общее количество заказов
+                  orders:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OrderListResponse'
+                  page:
+                    type: integer
+                    description: Текущая страница
+                  pageSize:
+                    type: integer
+                    description: Количество заказов на странице
+        '400':
+          description: Неверный запрос, неполные или некорректные данные
+        '401':
+          description: Пользователь не авторизован
+        '404':
+          description: Заказы не найдены
+        '500':
+          description: Внутренняя ошибка сервера
+
           
 components:
   securitySchemes:
@@ -628,12 +688,24 @@ components:
           description: Сообщение о статусе заказа
           example: Заказ номер 101 создан
         
+    OrderListResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderDishesResponse'
+            
+    
     OrderDishesResponse:
       type: object
       properties:
         userId:
           type: integer
           description: Уникальный идентификатор пользователя
+        orderId:
+          type: integer
+          description: Уникальный идентификатор заказа
         items:
           type: array
           items:
